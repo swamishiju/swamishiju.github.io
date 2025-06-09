@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GSoC Weekly Report</title>
+
+    <!--Prism.js CSS for Syntax Highlighting-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"
+      rel="stylesheet"
+    />
+    <!-- Diff2Html CSS for Git Diff Styling -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>GSoC Weekly Report</h1>
+      <p>Week 2 | Swaminath Shiju | LPython</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+      <div class="report-section">
+        <h3>Weekly Agenda</h3>
+        <p>
+          The string changes were still happening so a lot work wasn't done on
+          the LPython frontend, I continued exposing the data types to the
+          frontend.
+        </p>
+        <p>
+          A major target for this week was implementing better syntax and
+          removing the specific hard coded types like
+          <code class="inline"> _lfortran_list_integer</code> to better more
+          extensible syntax like
+          <code class="inline"> _lfortran_list(integer)</code>.
+        </p>
+        <p>
+          A major roadblock I faced this week was making the dict syntax proper.
+          The changes I made to the parser for list, set were relatively minor
+          which I could implement with minimal knowledge in Yacc. The dict
+          syntax and tuple which I intend to implement next week is much harder
+          to implement and requires I think bigger changes to the grammar.
+        </p>
+      </div>
+      <!-- Achievements Section -->
+      <div class="report-section">
+        <h3>Achievements</h3>
+        <ul>
+          <li>Implemented better syntax for the new declarations</li>
+          <li>Implemented declaration for all supported types</li>
+          <li>Implemented more intrinsics for lists</li>
+          <li>Implemented specific dict type</li>
+        </ul>
+      </div>
+
+      <!-- Code Section -->
+      <div class="report-section">
+        <h2>Code Samples</h2>
+        <p>
+          After this week code like below now runs on LFortran using LFortran
+          specific intrinsics which can compile into llvm and wasm. As an almost
+          immediate benifit of the workflow changes nested list could be simply
+          used without any changes to frontend or backend.
+        </p>
+
+        <pre><code class="language-fortran">
+program lp_list
+
+    integer :: x
+    
+    type(_lfortran_list(integer)) :: test_list 
+    type(_lfortran_list(real)) :: test_list_1
+    type(_lfortran_list(real(4))) :: test_list_2
+
+    call _lfortran_list_reverse(test_list)
+    x = _lfortran_list_count(test_list, 4)
+
+    type(_lfortran_set(integer)) :: test_set 
+    
+    ! Nested lists
+    type(_lfortran_list(_lfortran_list(integer))) :: test_nested_list
+    type(_lfortran_list(integer)) :: test_list_3 = _lfortran_list_constant(10, 10, 10)
+
+
+    call _lfortran_list_append(test_nested_list, 
+                    _lfortran_list_constant(1, 0, 1, 12, 15, 15))
+    call _lfortran_list_append(test_list_3, 16)
+    call _lfortran_list_append(test_nested_list, test_list_3)
+
+    x = _lfortran_get_item(_lfortran_get_item(x, 0), 1)
+
+
+    ! Dicts 
+    type(_lfortran_test_dict):: dict_i  ! dict[integer, integer]
+    dict_i = _lfortran_dict_constant(1, 2, 2, 5, 3, 7)
+    x = _lfortran_len(dict_i)
+    x = _lfortran_get_item(dict_i, 2)
+
+    call _lfortran_set_item(dict_i, 3, 5)
+
+    type(_lfortran_test_dict_r):: dict_r ! dict[integer, real]
+end program
+            </code></pre>
+      </div>
+
+      <!-- PR Link Section -->
+      <div class="report-section">
+        <h2>Pull Requests</h2>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7529"
+              class="pr-link"
+              target="_blank"
+            >
+              #7529 More List intrinsics
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7594"
+              class="pr-link"
+              target="_blank"
+            >
+              #7594 Improved syntax
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7621"
+              class="pr-link"
+              target="_blank"
+            >
+              #7621 Simple dict implementation
+            </a>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>GSoC Student Report | Python Software Foundation</p>
+    </footer>
+
+    <!-- Prism.js Library for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-fortran.min.js"></script>
+    <!-- Diff2Html Library for Git Diffs -->
+    <script src="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.js"></script>
+
+    <!-- Example JavaScript to Load Git Diff -->
+    <script>
+      // Highlight all code blocks (for Prism.js)
+      Prism.highlightAll();
+
+      // Function to highlight mentions
+      function highlightMentions() {
+        const textElements = document.querySelectorAll("p, h2, h3, li"); // Text elements to scan for mentions
+        textElements.forEach((element) => {
+          element.innerHTML = element.innerHTML.replace(
+            /@([a-zA-Z0-9_-]+)/g,
+            '<a href="https://github.com/$1" class="mention">@$1</a>',
+          );
+        });
+      }
+
+      // Call the function to highlight mentions after the content is loaded
+      highlightMentions();
+    </script>
+  </body>
+</html>
