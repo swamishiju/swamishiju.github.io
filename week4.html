@@ -28,7 +28,7 @@
     <!-- Header Section -->
     <header>
       <h1>GSoC Weekly Report</h1>
-      <p>Week 3 | Swaminath Shiju | LPython</p>
+      <p>Week 4 | Swaminath Shiju | LPython</p>
     </header>
 
     <!-- Main Content Section -->
@@ -36,21 +36,18 @@
       <div class="report-section">
         <h3>Weekly Agenda</h3>
         <p>
-          This week I worked on implementing good syntax for dicts and tuples,
-          and porting more tests from LPython. The parser changes however did
-          reveal a shift/reduce conflict which we had missed.
-        </p>
-        <p>
-          We also have a close to complete port of Lists and several fully
-          ported tests.
+          This was mostly spent refactoring the backend code and improving the
+          test coverage for the new types.
         </p>
       </div>
       <!-- Achievements Section -->
       <div class="report-section">
         <h3>Achievements</h3>
         <ul>
-          <li>Fully ported several tests from LPython for lists</li>
-          <li>Implemented proper syntax for dicts, tuples</li>
+          <li>Fully ported several tests from LPython for dicts</li>
+          <li>Fully ported all tests from LPython for tuples</li>
+          <li>Simplified syntax for dicts, tuples</li>
+          <li>Refactored back-end code</li>
         </ul>
       </div>
 
@@ -58,32 +55,19 @@
       <div class="report-section">
         <h2>Code Samples</h2>
         <p>
-          After this week code like below now runs on LFortran using LFortran
-          specific intrinsics which can compile into llvm and wasm. As an almost
-          immediate benifit of the workflow changes nested list could be simply
-          used without any changes to frontend or backend.
+          This week's work didn't introduce a ton of new syntax changes other
+          than taking the new types out of the
+          <code class="inline"> type</code> intrinsic.
         </p>
 
         <pre><code class="language-fortran">
 program lp_test
 
-    integer :: x
-    
-    type(_lfortran_list(integer)) :: test_list = _lfortran_list_constant(1, 1, 1, 2)
-    test_list = _lfortran_concat(test_list, _lfortran_list_constant(1, 1, 1, 2))
+    _lfortran_list(integer)                                 :: test_list 
+    _lfortran_dict(integer, real)                           :: test_dict
+    _lfortran_set(integer)                                  :: test_set
+    _lfortran_tuple(integer, _lfortran_tuple(integer))      :: test_tuple
 
-    call _lfortran_list_insert(test_list, 2, 3)
-    call _lfortran_list_clear(test_list)
-
-    type(_lfortran_dict(integer, integer(4))):: dict_i
-    dict_i = _lfortran_dict_constant(1, 2, 2, 5, 3, 7)
-
-    x = _lfortran_get_item(dict_i, 2)
-    call _lfortran_set_item(dict_i, 3, 5)
-
-    type(_lfortran_tuple(integer, real, character(len=:), logical)) :: t1
-    t1 = _lfortran_tuple_constant(1, 2.0, "3", .true.)
-    x = _lfortran_get_item(t3, 0)
 end program
             </code></pre>
       </div>
@@ -94,47 +78,38 @@ end program
         <ul>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/7653"
+              href="https://github.com/lfortran/lfortran/pull/7763"
               class="pr-link"
               target="_blank"
             >
-              #7643 List intrinsics/tests - 1
+              #7763 Implemented tests for new syntax
             </a>
           </li>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/7660"
+              href="https://github.com/lfortran/lfortran/pull/7799"
               class="pr-link"
               target="_blank"
             >
-              #7660 List intrinsics/tests - 2
+              #7799 Refactored function names
             </a>
           </li>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/7671"
+              href="https://github.com/lfortran/lfortran/pull/7807"
               class="pr-link"
               target="_blank"
             >
-              #7671 List intrinsics/tests - 3
+              #7807 Ported tuple tests
             </a>
           </li>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/7684"
+              href="https://github.com/lfortran/lfortran/pull/7813"
               class="pr-link"
               target="_blank"
             >
-              #7684 Parser changes and Tuple,Dict type
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/lfortran/lfortran/pull/7698"
-              class="pr-link"
-              target="_blank"
-            >
-              #7698 Parser Shift/Reduce conflict resolution
+              #7813 Ported dict tests
             </a>
           </li>
         </ul>
@@ -143,14 +118,10 @@ end program
       <div class="report-section">
         <h3>Goals for next week</h3>
         <p>
-          There has been some refactoring in the backend regarding how types are
-          treated so next week I plan on transitioning the LPython specific
-          backend code from relying on <code class="inline">type_code</code> to
-          some other way of specifying type.
-        </p>
-        <p>
-          Another thing is to port remaining tests for the types including
-          things like list of tuples and such.
+          A main goal for next week is implementing Union types into LFortran
+          frontend so that we can extensively test it. This would go hand in
+          hand with the introduction on python types and help us make sync
+          significantly easier.
         </p>
       </div>
     </main>
