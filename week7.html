@@ -28,8 +28,8 @@
     <!-- Header Section -->
     <header>
       <h1>GSoC Weekly Report</h1>
-      <p>Week 3 | Swaminath Shiju | LPython</p>
-      <p>8 June to 15 June</p>
+      <p>Week 7 | Swaminath Shiju | LPython</p>
+      <p>6 July to 13 July</p>
     </header>
 
     <!-- Main Content Section -->
@@ -37,56 +37,22 @@
       <div class="report-section">
         <h3>Weekly Agenda</h3>
         <p>
-          This week I worked on implementing good syntax for dicts and tuples,
-          and porting more tests from LPython. The parser changes however did
-          reveal a shift/reduce conflict which we had missed.
+          This week I focused more on uncommenting tests in LPython. I've made
+          good progress for unsigned integer types but C-interop still remains
+          to be fixed.
         </p>
         <p>
-          We also have a close to complete port of Lists and several fully
-          ported tests.
+          The C-interop has some overlap with the string refactor the extent of
+          which I am not sure, but hopefully it shouldn't be a huge blocker.
         </p>
       </div>
       <!-- Achievements Section -->
       <div class="report-section">
         <h3>Achievements</h3>
         <ul>
-          <li>Fully ported several tests from LPython for lists</li>
-          <li>Implemented proper syntax for dicts, tuples</li>
+          <li>Fixed Unsigned integer properly in libasr</li>
+          <li>Made progress towards having C-introp working in LP</li>
         </ul>
-      </div>
-
-      <!-- Code Section -->
-      <div class="report-section">
-        <h2>Code Samples</h2>
-        <p>
-          After this week code like below now runs on LFortran using LFortran
-          specific intrinsics which can compile into llvm and wasm. As an almost
-          immediate benifit of the workflow changes nested list could be simply
-          used without any changes to frontend or backend.
-        </p>
-
-        <pre><code class="language-fortran">
-program lp_test
-
-    integer :: x
-    
-    type(_lfortran_list(integer)) :: test_list = _lfortran_list_constant(1, 1, 1, 2)
-    test_list = _lfortran_concat(test_list, _lfortran_list_constant(1, 1, 1, 2))
-
-    call _lfortran_list_insert(test_list, 2, 3)
-    call _lfortran_list_clear(test_list)
-
-    type(_lfortran_dict(integer, integer(4))):: dict_i
-    dict_i = _lfortran_dict_constant(1, 2, 2, 5, 3, 7)
-
-    x = _lfortran_get_item(dict_i, 2)
-    call _lfortran_set_item(dict_i, 3, 5)
-
-    type(_lfortran_tuple(integer, real, character(len=:), logical)) :: t1
-    t1 = _lfortran_tuple_constant(1, 2.0, "3", .true.)
-    x = _lfortran_get_item(t3, 0)
-end program
-            </code></pre>
       </div>
 
       <!-- PR Link Section -->
@@ -95,47 +61,65 @@ end program
         <ul>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/7653"
+              href="https://github.com/lfortran/lfortran/pull/8002"
               class="pr-link"
               target="_blank"
             >
-              #7643 List intrinsics/tests - 1
+              #8002 LP type - argument handling in C backend
             </a>
           </li>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/7660"
+              href="https://github.com/lfortran/lfortran/pull/8011"
               class="pr-link"
               target="_blank"
             >
-              #7660 List intrinsics/tests - 2
+              #8011 C backend dict-copy fix
             </a>
           </li>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/7671"
+              href="https://github.com/lfortran/lfortran/pull/8034"
               class="pr-link"
               target="_blank"
             >
-              #7671 List intrinsics/tests - 3
+              #8034 Support unsigned integer in LF
             </a>
           </li>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/7684"
+              href="https://github.com/lfortran/lfortran/pull/8037"
               class="pr-link"
               target="_blank"
             >
-              #7684 Parser changes and Tuple,Dict type
+              #8037 Proper handling of string argument in C backend
             </a>
           </li>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/7698"
+              href="https://github.com/lfortran/lfortran/pull/8002"
               class="pr-link"
               target="_blank"
             >
-              #7698 Parser Shift/Reduce conflict resolution
+              #8055 Unsigned int print fix
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lcompilers/lpython/pull/2862"
+              class="pr-link"
+              target="_blank"
+            >
+              #2862 Fixed unsigned integer tests
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lcompilers/lpython/pull/2862"
+              class="pr-link"
+              target="_blank"
+            >
+              #2863 String arguments fix
             </a>
           </li>
         </ul>
@@ -144,14 +128,13 @@ end program
       <div class="report-section">
         <h3>Goals for next week</h3>
         <p>
-          There has been some refactoring in the backend regarding how types are
-          treated so next week I plan on transitioning the LPython specific
-          backend code from relying on <code class="inline">type_code</code> to
-          some other way of specifying type.
+          The goal for next week is to get robust tests working for the
+          C-interop and unsigned integer PRs.
         </p>
         <p>
-          Another thing is to port remaining tests for the types including
-          things like list of tuples and such.
+          The string refactor will also most likely be finished soon and likely
+          break the LP type tests implemented in LF, so i need to work on fixing
+          those too. When that is done the libasr sync should go smoothly.
         </p>
       </div>
     </main>
@@ -166,6 +149,7 @@ end program
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-fortran.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-powershell.min.js"></script>
     <!-- Diff2Html Library for Git Diffs -->
     <script src="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.js"></script>
 
