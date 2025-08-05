@@ -28,8 +28,8 @@
     <!-- Header Section -->
     <header>
       <h1>GSoC Weekly Report</h1>
-      <p>Week 9 | Swaminath Shiju | LPython</p>
-      <p>20 July to 27 July</p>
+      <p>Week 10 | Swaminath Shiju | LPython</p>
+      <p>27 July to 3 August</p>
     </header>
 
     <!-- Main Content Section -->
@@ -37,65 +37,31 @@
       <div class="report-section">
         <h3>Weekly Agenda</h3>
         <p>
-          This week I worked on getting the LFortran struct and string refactors
-          to sync with LPython. I also implemented a basic uint test in
-          LFortran.
+          This week I worked on finishing LPython sync and integrating the
+          string/struct refactors to get integration tests working again.
         </p>
+        <p>I also wrapped up the Union refactor PR</p>
       </div>
       <!-- Achievements Section -->
       <div class="report-section">
         <h3>Achievements</h3>
         <ul>
-          <li>Uint in LF frontend</li>
+          <li>Uncommented Integration tests in LP</li>
+          <li>Union refactor</li>
         </ul>
       </div>
 
-      <!-- Code Section -->
-      <div class="report-section">
-        <h2>Code Samples</h2>
-
-        <pre><code class="language-fortran">
-program lp_test
-    implicit none
-
-    type(uint) :: x
-    x = 1
-
-    do i = 1, 30
-        x = x * _lfortran_uint(2)
-        y = y * 2
-        if ( x < _lfortran_uint(0) ) error stop 
-        if ( y < 0 )  error stop 
-    end do
-
-    x = x * _lfortran_uint(2)
-    if ( x < _lfortran_uint(0) ) error stop 
-    x = x * _lfortran_uint(2)
-    if ( x /= _lfortran_uint(0) ) error stop 
-end program
-
-            </code></pre>
-      </div>
       <!-- PR Link Section -->
       <div class="report-section">
         <h2>Pull Requests</h2>
         <ul>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/8132"
+              href="https://github.com/lfortran/lfortran/pull/7966"
               class="pr-link"
               target="_blank"
             >
-              #8132 Fixing list regression after string refactor
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/lfortran/lfortran/pull/8149"
-              class="pr-link"
-              target="_blank"
-            >
-              #8149 Uint frontent
+              #7966 Union refactor
             </a>
           </li>
         </ul>
