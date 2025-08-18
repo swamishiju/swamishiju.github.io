@@ -28,8 +28,8 @@
     <!-- Header Section -->
     <header>
       <h1>GSoC Weekly Report</h1>
-      <p>Week 9 | Swaminath Shiju | LPython</p>
-      <p>20 July to 27 July</p>
+      <p>Week 12 | Swaminath Shiju | LPython</p>
+      <p>10 August to 17 August</p>
     </header>
 
     <!-- Main Content Section -->
@@ -37,66 +37,49 @@
       <div class="report-section">
         <h3>Weekly Agenda</h3>
         <p>
-          This week I worked on getting the LFortran struct and string refactors
-          to sync with LPython. I also implemented a basic uint test in
-          LFortran.
+          This week I continued working on the LP sync and fixed the dict
+          regression in LF.
         </p>
       </div>
       <!-- Achievements Section -->
       <div class="report-section">
         <h3>Achievements</h3>
         <ul>
-          <li>Uint in LF frontend</li>
-          <li>Test coverage for Uint</li>
+          <li>Remote has ~200 tests in LP passing</li>
+          <li>Fixed dict regression and added more tests</li>
+          <li>Robust test coverage for backend</li>
         </ul>
       </div>
 
-      <!-- Code Section -->
-      <div class="report-section">
-        <h2>Code Samples</h2>
-
-        <pre><code class="language-fortran">
-program lp_test
-    implicit none
-
-    type(uint) :: x
-    x = 1
-
-    do i = 1, 30
-        x = x * _lfortran_uint(2)
-        y = y * 2
-        if ( x < _lfortran_uint(0) ) error stop 
-        if ( y < 0 )  error stop 
-    end do
-
-    x = x * _lfortran_uint(2)
-    if ( x < _lfortran_uint(0) ) error stop 
-    x = x * _lfortran_uint(2)
-    if ( x /= _lfortran_uint(0) ) error stop 
-end program
-
-            </code></pre>
-      </div>
       <!-- PR Link Section -->
       <div class="report-section">
         <h2>Pull Requests</h2>
         <ul>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/8132"
+              href="https://github.com/lfortran/lfortran/pull/8359"
               class="pr-link"
               target="_blank"
             >
-              #8132 Fixing list regression after string refactor
+              #8359 Fix for dict regression
             </a>
           </li>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/8149"
+              href="https://github.com/lfortran/lfortran/pull/8301"
               class="pr-link"
               target="_blank"
             >
-              #8149 Uint frontent
+              #8301 Sync
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lcompilers/lpython/pull/2866"
+              class="pr-link"
+              target="_blank"
+            >
+              #2866 Sync
             </a>
           </li>
         </ul>
@@ -104,7 +87,7 @@ end program
 
       <div class="report-section">
         <h3>Goals for next week</h3>
-        <p>Continue the LPython sync</p>
+        <p>This has been my final week in the GSoC 2025 Program.</p>
       </div>
     </main>
 
