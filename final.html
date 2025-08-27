@@ -30,17 +30,39 @@
     </header>
 
     <main>
+      <h1>Google Summer of Code 2025 Final Report</h1>
+      <p>
+        <strong>Student:</strong> Swaminath Shiju <br />
+        <strong>Project:</strong> Expanding OOP capabilities of LPython for
+        porting common CPython modules <br />
+        <strong>Organisation:</strong> Python Software Foundation <br />
+        <strong>Mentor:</strong>
+        <a href="https://github.com/certik" target="_blank">Ondřej Čertík</a>
+        <br />
+        <strong>Weekly Reports:</strong>
+        <a href="./gsoc25.html#reports">Link to weekly reports</a>
+        <br />
+      </p>
       <div id="abstract" class="report-section">
         <h2>Abstract</h2>
         <p>
-          This project brings Python-style container types and modern features
-          to LFortran/LPython, tightens their compiler/runtime integration, and
-          completed a major synchronization cycle with <code>libasr</code>.
+          The original goal was to enhance LPython’s object-oriented programming
+          (OOP) capabilities by implementing dunder methods and supporting
+          non-dataclass imports. However, due to significant updates in LPython
+          and its shared backend with LFortran, the project scope was revised
+          during the bonding period in consultation with my mentor.
         </p>
         <p>
-          Work spanned frontend syntax, backend code generation, data structure
-          intrinsics, unsigned integers, C-backend fixes, and handling of Union
-          types.
+          The revised objective focused on implementing Python-style container
+          types (lists, sets, dictionaries, and tuples) in LFortran’s frontend
+          and runtime. This effort improved test coverage for Python-specific
+          backend components, ensured smoother synchronization with LPython’s
+          <code>libasr</code> backend, and supported a major synchronization
+          cycle.
+        </p>
+        <p>
+          The project spanned frontend syntax, backend code generation, and data
+          structure intrinsics.
         </p>
       </div>
 
@@ -508,7 +530,7 @@
           </li>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/8002"
+              href="https://github.com/lfortran/lfortran/pull/8055"
               class="pr-link"
               target="_blank"
             >
@@ -553,7 +575,7 @@
           </li>
           <li>
             <a
-              href="https://github.com/lfortran/lfortran/pull/7912"
+              href="https://github.com/lcompilers/lpython/pull/2840"
               class="pr-link"
               target="_blank"
             >
@@ -571,7 +593,7 @@
           </li>
           <li>
             <a
-              href="https://github.com/lcompilers/lpython/pull/2862"
+              href="https://github.com/lcompilers/lpython/pull/2863"
               class="pr-link"
               target="_blank"
             >
@@ -590,34 +612,84 @@
         </ul>
       </section>
 
+      <section id="current">
+        <h2>Current State</h2>
+        <ul>
+          <li>
+            LPython’s continuous integration (CI) supports approximately 200
+            tests with the latest <code>libasr</code> backend.
+          </li>
+          <li>
+            Ported all tuple tests and nearly all list, set, and dictionary
+            tests to LFortran. Most tests affected by the backend string
+            refactoring broke. I fixed list tests and all but one dictionary
+            test fixed.
+          </li>
+          <li>
+            Adapted the LPython frontend to align with recent backend
+            refactoring efforts.
+          </li>
+        </ul>
+      </section>
+
       <section id="future">
         <h2>Future Work</h2>
         <ul>
           <li>
-            Finish LPython sync and get ~300 tests working with robust backend
-            tests in LF to make syncs easier
+            Complete LPython synchronization to achieve approximately 300
+            passing tests, integrating LFortran-specific features as tests to
+            prevent backend changes from breaking LPython.
           </li>
           <li>
-            Fix classes in LP and implement dunder methods, non-dataclass
-            imports
+            Implement dunder methods and non-dataclass imports in LPython,
+            aligning with the original project goals.
           </li>
-          <li>Start porting more of CPython's standard modules</li>
-          <li>Benchmark using AoC'25</li>
+          <li>
+            Begin porting additional CPython standard library modules to
+            LPython.
+          </li>
+          <li>Benchmark performance using Advent of Code 2025 challenges.</li>
         </ul>
       </section>
-
+      <section id="learn">
+        <h2>Learnings</h2>
+        <ul>
+          <li>
+            Before I started committing to the project I had little to no
+            experience with the LLVM toolchain - but along the course of the
+            project I have picked up a good amount of LLVM fundamentals to begin
+            exploring on my own.
+          </li>
+          <li>
+            I've learnt how to use tools like lldb to help debug large complex
+            projects
+          </li>
+          <li>
+            I've also learnt how to effectively communicate with other
+            open-source contributors in the community.
+          </li>
+          <li>
+            With my college semester starting in the final 3–4 weeks of the
+            program, I developed effective time management skills to balance
+            academic responsibilities and project commitments.
+          </li>
+          <li>Git version control, bison, flex, conda, mambda etc</li>
+        </ul>
+      </section>
       <section id="ack">
         <h2>Acknowledgements</h2>
         <p>
           Thanks to my mentor
-          <a href="https://github.com/certik" target="_blank">@certik</a>, the
-          LFortran/LPython community, and PSF GSoC coordinators for guidance and
-          reviews throughout the project.
+          <a href="https://github.com/certik" target="_blank">Ondřej Čertík</a>,
+          the LFortran/LPython community, and PSF GSoC coordinators for
+          accepting me into this program and providing guidance and reviews
+          throughout the project.
         </p>
       </section>
     </main>
+
     <footer>
-      <p class="meta">GSoC 2025 – Final work report. Built from weekly logs.</p>
+      <p>GSoC Final Work Report | Python Software Foundation</p>
     </footer>
   </body>
 </html>
