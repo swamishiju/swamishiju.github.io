@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GSoC Weekly Report</title>
+
+    <!--Prism.js CSS for Syntax Highlighting-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"
+      rel="stylesheet"
+    />
+    <!-- Diff2Html CSS for Git Diff Styling -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>GSoC Weekly Report</h1>
+      <p>Week 5 | Swaminath Shiju | LPython</p>
+      <p>22 June to 29 June</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+      <div class="report-section">
+        <h3>Weekly Agenda</h3>
+        <p>
+          This week was spent refactoring the old backend for the python types
+          to have less reliance on functionality that we plan to phase out like
+          the <code class="inline">type_code</code> design and the
+          <code class="inline">create_gep</code> function. This would make the
+          backend more robust and support the new type changes being worked on
+          for LFortran.
+        </p>
+        <p>
+          I also parallelly started work on Union types as part of my original
+          proposal.
+        </p>
+      </div>
+      <!-- Achievements Section -->
+      <div class="report-section">
+        <h3>Achievements</h3>
+        <ul>
+          <li>Some misc fixes in tuple backend</li>
+          <li>Fixed support string type keys for dicts</li>
+          <li>Heavily optimized list pop</li>
+          <li>Exposed union type to LFortran frontend</li>
+          <li>Refactored backed for less reliance on create_gep, typecode</li>
+          <li>Successfully merged a month long sync PR for LPython</li>
+        </ul>
+      </div>
+
+      <!-- Code Section -->
+      <div class="report-section">
+        <h2>Code Samples</h2>
+
+        <pre><code class="language-fortran">
+program lp_test
+
+    integer :: x
+    _lfortran_tuple(integer, integer)                                                :: t1
+    _lfortran_tuple(integer, integer)                                                :: t2
+    _lfortran_tuple(_lfortran_tuple(integer, integer),_lfortran_tuple(integer, integer), &
+      _lfortran_tuple(integer, integer),_lfortran_tuple(integer, integer))           :: t3
+
+    _lfortran_dict(_lfortran_tuple(integer, integer), _lfortran_tuple(real, real))   :: d1
+
+    t1 = _lfortran_tuple_constant(-1, -2)
+    t2 = _lfortran_tuple_constant(-3, -4)
+    t3 = _lfortran_tuple_constant(t1, t2, t1, t2)
+
+    if ( .not. _lfortran_eq(_lfortran_get_item(t3, 0), t1) ) error stop
+
+
+    type:: test_type
+        integer :: x
+        real    :: y
+    end type
+
+    _lfortran_union_type :: test_type1 
+        integer :: x
+        real    :: i
+        type(test_type) :: y
+    end _lfortran_union_type
+
+
+    _lfortran_union_type :: test_type2 
+        integer :: x
+        real    :: i
+        type(test_type) :: y
+    end _lfortran_union_type
+
+
+    type(test_type) :: t_ty
+    type(test_type1) :: t_ty1
+    type(test_type2) :: t_ty2
+
+end program
+
+            </code></pre>
+      </div>
+
+      <div class="report-section">
+        <h2>Optimization Benchmark</h2>
+        <p>Test Code</p>
+
+        <pre><code class="language-fortran">
+program test
+    implicit none
+    _lfortran_list(integer):: x
+    integer:: i, g
+        do i = 1, 100000
+    call _lfortran_list_append(x, i)
+    end do
+
+    do i = 1, 100000
+        g = _lfortran_pop(x, 0)
+    end do
+end program test
+            </code></pre>
+
+        <pre><code class="language-powershell">
+#! bin/bash
+# Pre-optimization
+
+time lfortran test.f90
+# 17.23s
+time lfortran test.f90 --fast
+# 0.91s
+
+
+# Post-optimization
+
+time lfortran test.f90
+# 0.93s
+time lfortran test.f90 --fast
+# 0.92s
+      </code></pre>
+      </div>
+      <!-- PR Link Section -->
+      <div class="report-section">
+        <h2>Pull Requests</h2>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7873"
+              class="pr-link"
+              target="_blank"
+            >
+              #7873 Misc fixes for tuple types
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7896"
+              class="pr-link"
+              target="_blank"
+            >
+              #7896 Implemented support for string key in dict type
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7898"
+              class="pr-link"
+              target="_blank"
+            >
+              #7898 Optimized list pop
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7901"
+              class="pr-link"
+              target="_blank"
+            >
+              #7901 Refactored backend for less reliance on typecodes
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7909"
+              class="pr-link"
+              target="_blank"
+            >
+              #7909 Exposed the Union type to LFortran
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7912"
+              class="pr-link"
+              target="_blank"
+            >
+              #7912 Refactored backend for less reliance on create_gep
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7912"
+              class="pr-link"
+              target="_blank"
+            >
+              #2840 Syncing LPython to latest libasr
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h3>Goals for next week</h3>
+        <p>
+          The main goal for next week is get accessing Union elements so we
+          robustly test if the memory allocation is proper and supporting
+          pythonic types inside union.
+        </p>
+        <p>
+          Other goals include things like fixing failing tests in LPython after
+          sync and trying to completely remove the reliance on typecodes.
+        </p>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>GSoC Student Report | Python Software Foundation</p>
+    </footer>
+
+    <!-- Prism.js Library for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-fortran.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-powershell.min.js"></script>
+    <!-- Diff2Html Library for Git Diffs -->
+    <script src="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.js"></script>
+
+    <!-- Example JavaScript to Load Git Diff -->
+    <script>
+      // Highlight all code blocks (for Prism.js)
+      Prism.highlightAll();
+
+      // Function to highlight mentions
+      function highlightMentions() {
+        const textElements = document.querySelectorAll("p, h2, h3, li"); // Text elements to scan for mentions
+        textElements.forEach((element) => {
+          element.innerHTML = element.innerHTML.replace(
+            /@([a-zA-Z0-9_-]+)/g,
+            '<a href="https://github.com/$1" class="mention">@$1</a>',
+          );
+        });
+      }
+
+      // Call the function to highlight mentions after the content is loaded
+      highlightMentions();
+    </script>
+  </body>
+</html>

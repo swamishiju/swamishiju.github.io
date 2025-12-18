@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GSoC Weekly Report</title>
+
+    <!--Prism.js CSS for Syntax Highlighting-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"
+      rel="stylesheet"
+    />
+    <!-- Diff2Html CSS for Git Diff Styling -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>GSoC Weekly Report</h1>
+      <p>Week X | Swaminath Shiju | LPython</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+      <!-- Introduction Section -->
+      <div class="report-section">
+        <h2>Introduction</h2>
+        <p>
+          Brief summary of the work done during this week. Mention the tasks you
+          worked on, problems solved, etc.
+        </p>
+      </div>
+
+      <!-- Achievements Section -->
+      <div class="report-section">
+        <h2>Achievements</h2>
+        <ul>
+          <li>Task 1 completed: Explanation of what was achieved.</li>
+          <li>Task 2 started: Explanation of what has been worked on.</li>
+          <li>
+            Bug fix or feature improvement: Details about what was fixed or
+            improved.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Code Section -->
+      <div class="report-section">
+        <h2>Code Samples</h2>
+        <p>
+          Below are some important code snippets that were part of this week's
+          progress:
+        </p>
+        <pre><code class="language-python">
+# Example of a code block
+def hello_world():
+    print("Hello, world!")
+            </code></pre>
+      </div>
+
+      <!-- Git Diff Section -->
+      <div class="report-section">
+        <h2>Git Diff</h2>
+        <p>Changes made in the codebase this week:</p>
+        <div id="diff-container"></div>
+      </div>
+
+      <!-- PR Link Section -->
+      <div class="report-section">
+        <h2>Pull Request</h2>
+        <p>
+          Here is the link to the pull request for the changes made this week:
+        </p>
+        <a
+          href="https://github.com/your-repo/your-pr"
+          class="pr-link"
+          target="_blank"
+        >
+          View PR on GitHub
+        </a>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>GSoC Student Report | Organization Name</p>
+    </footer>
+
+    <!-- Prism.js Library for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-fortran.min.js"></script>
+
+    <!-- Diff2Html Library for Git Diffs -->
+    <script src="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.js"></script>
+
+    <!-- Example JavaScript to Load Git Diff -->
+    <script>
+      // Sample Git Diff data (you can replace this with your actual Git diff data)
+      var gitDiff = `
+diff --git a/example.py b/example.py
+index 6ef3d3e..d9c8eae 100644
+--- a/example.py
++++ b/example.py
+@@ -1,4 +1,4 @@
+-def hello_world():
+-    print("Hello, world!")
++def greet_user(name):
++    print(f"Hello, {name}!")
+        `;
+
+      // Convert the Git diff to HTML using Diff2Html
+      var diffHtml = Diff2Html.getPrettyHtml(gitDiff, {
+        inputFormat: "diff", // Git diff format
+        showFiles: true, // Show the file names in the diff
+        matching: "words", // Match words, you can change this to 'lines'
+        outputFormat: "line-by-line", // Output format for the diff
+      });
+
+      // Insert the diff HTML into the container
+      document.getElementById("diff-container").innerHTML = diffHtml;
+
+      // Highlight all code blocks (for Prism.js)
+      Prism.highlightAll();
+
+      // Function to highlight mentions
+      function highlightMentions() {
+        const textElements = document.querySelectorAll("p, h2, h3, li"); // Text elements to scan for mentions
+        textElements.forEach((element) => {
+          element.innerHTML = element.innerHTML.replace(
+            /@([a-zA-Z0-9_-]+)/g,
+            '<span class="mention">@$1</span>',
+          );
+        });
+      }
+
+      // Call the function to highlight mentions after the content is loaded
+      highlightMentions();
+    </script>
+  </body>
+</html>

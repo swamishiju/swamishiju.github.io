@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GSoC Weekly Report</title>
+
+    <!--Prism.js CSS for Syntax Highlighting-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"
+      rel="stylesheet"
+    />
+    <!-- Diff2Html CSS for Git Diff Styling -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>GSoC Weekly Report</h1>
+      <p>Week 4 | Swaminath Shiju | LPython</p>
+      <p>15 June to 22 June</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+      <div class="report-section">
+        <h3>Weekly Agenda</h3>
+        <p>
+          This was mostly spent refactoring the backend code and improving the
+          test coverage for the new types.
+        </p>
+      </div>
+      <!-- Achievements Section -->
+      <div class="report-section">
+        <h3>Achievements</h3>
+        <ul>
+          <li>Fully ported several tests from LPython for dicts</li>
+          <li>Fully ported all tests from LPython for tuples</li>
+          <li>Simplified syntax for dicts, tuples</li>
+          <li>Refactored back-end code</li>
+        </ul>
+      </div>
+
+      <!-- Code Section -->
+      <div class="report-section">
+        <h2>Code Samples</h2>
+        <p>
+          This week's work didn't introduce a ton of new syntax changes other
+          than taking the new types out of the
+          <code class="inline"> type</code> intrinsic.
+        </p>
+
+        <pre><code class="language-fortran">
+program lp_test
+
+    _lfortran_list(integer)                                 :: test_list 
+    _lfortran_dict(integer, real)                           :: test_dict
+    _lfortran_set(integer)                                  :: test_set
+    _lfortran_tuple(integer, _lfortran_tuple(integer))      :: test_tuple
+
+end program
+            </code></pre>
+      </div>
+
+      <!-- PR Link Section -->
+      <div class="report-section">
+        <h2>Pull Requests</h2>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7763"
+              class="pr-link"
+              target="_blank"
+            >
+              #7763 Implemented tests for new syntax
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7799"
+              class="pr-link"
+              target="_blank"
+            >
+              #7799 Refactored function names
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7807"
+              class="pr-link"
+              target="_blank"
+            >
+              #7807 Ported tuple tests
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7813"
+              class="pr-link"
+              target="_blank"
+            >
+              #7813 Ported dict tests
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h3>Goals for next week</h3>
+        <p>
+          A main goal for next week is implementing Union types into LFortran
+          frontend so that we can extensively test it. This would go hand in
+          hand with the introduction on python types and help us make sync
+          significantly easier.
+        </p>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>GSoC Student Report | Python Software Foundation</p>
+    </footer>
+
+    <!-- Prism.js Library for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-fortran.min.js"></script>
+    <!-- Diff2Html Library for Git Diffs -->
+    <script src="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.js"></script>
+
+    <!-- Example JavaScript to Load Git Diff -->
+    <script>
+      // Highlight all code blocks (for Prism.js)
+      Prism.highlightAll();
+
+      // Function to highlight mentions
+      function highlightMentions() {
+        const textElements = document.querySelectorAll("p, h2, h3, li"); // Text elements to scan for mentions
+        textElements.forEach((element) => {
+          element.innerHTML = element.innerHTML.replace(
+            /@([a-zA-Z0-9_-]+)/g,
+            '<a href="https://github.com/$1" class="mention">@$1</a>',
+          );
+        });
+      }
+
+      // Call the function to highlight mentions after the content is loaded
+      highlightMentions();
+    </script>
+  </body>
+</html>

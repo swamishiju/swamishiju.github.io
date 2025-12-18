@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GSoC Weekly Report</title>
+
+    <!--Prism.js CSS for Syntax Highlighting-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"
+      rel="stylesheet"
+    />
+    <!-- Diff2Html CSS for Git Diff Styling -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>GSoC Weekly Report</h1>
+      <p>Week 1 | Swaminath Shiju | LPython</p>
+      <p>25 May to 1 June</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+      <!-- Introduction Section -->
+      <div class="report-section">
+        <h2>Introduction</h2>
+        <p>
+          Hey everyone, this is the first of my GSoC'25 blog posts while working
+          under LPython: PSF summarizing my weekly work.
+        </p>
+
+        <p>Huge thanks to my mentor @certik for being extremely supportive</p>
+      </div>
+
+      <div class="report-section">
+        <h3>Weekly Agenda</h3>
+        <p>
+          The backend of LPython referred to as
+          <code class="inline">libasr</code> is shared with LPython's sister
+          project LFortran which is more actively developed and significantly
+          better tested. Occasionally contributors to the LPython project need
+          to sync each libasr in the past when they were seperate which was an
+          extremely tedious task.
+        </p>
+        <p>
+          Now we have updated the workflow to use a submodule pointing to the
+          LFortran repo which makes it much easier keep LPython's frontend
+          compliant with the backend.
+        </p>
+
+        <p>
+          My original plan was to make LPython functional after the last sync
+          but there was a blocker since LFortran is having major changes to its
+          string type in the backend. So as that is going on I'm going to be
+          implementing python specific data-types like list, set, etc which are
+          present in the backend but not tested for LLVM > 16. Prior to the GSoC
+          acceptance I had fixed these data types for LLVM < 16 after the sync,
+          but we only found out there bugs for higher LLVM version after
+          exposing them in LFortran because of the better test coverage.
+        </p>
+      </div>
+      <!-- Achievements Section -->
+      <div class="report-section">
+        <h3>Achievements</h3>
+        <ul>
+          <li>Exposed specific List, Set types to the LFortran frontend</li>
+          <li>Fixed bugs that were highlighted from better testing</li>
+          <li>Implemented simple related builtins as intrinsics</li>
+        </ul>
+      </div>
+
+      <!-- Code Section -->
+      <div class="report-section">
+        <h2>Code Samples</h2>
+        <p>
+          Code like below now runs on LFortran using LFortran specific
+          intrinsics which can compile into llvm and wasm.
+        </p>
+
+        <pre><code class="language-fortran">
+program lp_list
+
+    integer :: x
+    
+    type(_lfortran_list_integer) :: test_list 
+    call _lfortran_list_append(test_list, 1)
+    x = _lfortran_len(test_list)
+
+    test_list = _lfortran_list_constant(1, 2, 3, 4)
+
+    type(_lfortran_set_integer) :: test_set 
+    test_set = _lfortran_set_constant(1, 2, 3, 4, 4, 5, 4, 10)
+    call _lfortran_set_add(test_set, 1)         
+    x = _lfortran_len(test_set)
+    if (x /= 7) error stop
+
+    test_set = _lfortran_set_constant(1, 2, 3, 4)
+    call _lfortran_set_add(test_set, -50)
+    ! Add other intrinsics later
+end program
+            </code></pre>
+      </div>
+
+      <!-- PR Link Section -->
+      <div class="report-section">
+        <h2>Pull Requests</h2>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7419"
+              class="pr-link"
+              target="_blank"
+            >
+              #7419 List implementation
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7462"
+              class="pr-link"
+              target="_blank"
+            >
+              #7462 Set implementation
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/7459"
+              class="pr-link"
+              target="_blank"
+            >
+              #7459 Misc PR towards compiling toml-f
+            </a>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>GSoC Student Report | Python Software Foundation</p>
+    </footer>
+
+    <!-- Prism.js Library for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-fortran.min.js"></script>
+    <!-- Diff2Html Library for Git Diffs -->
+    <script src="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.js"></script>
+
+    <!-- Example JavaScript to Load Git Diff -->
+    <script>
+      // Highlight all code blocks (for Prism.js)
+      Prism.highlightAll();
+
+      // Function to highlight mentions
+      function highlightMentions() {
+        const textElements = document.querySelectorAll("p, h2, h3, li"); // Text elements to scan for mentions
+        textElements.forEach((element) => {
+          element.innerHTML = element.innerHTML.replace(
+            /@([a-zA-Z0-9_-]+)/g,
+            '<a href="https://github.com/$1" class="mention">@$1</a>',
+          );
+        });
+      }
+
+      // Call the function to highlight mentions after the content is loaded
+      highlightMentions();
+    </script>
+  </body>
+</html>

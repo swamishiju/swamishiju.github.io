@@ -62,22 +62,22 @@ to the LPython project under the ***Python Software Foundation***.
 This post serves as a comprehensive collection of my weekly progress
 updates, key milestones, challenges overcome, and the final work
 report, documenting my GSoC journey.
-`,listed:!0,external:!1,path:"temp_dist/posts/gsoc25.json"},grouptheory_a44f1b9751:{title:"Group Theory and Cryptography",date:"Aug 10,2025",tags:["External","Mathematics","Cryptography"],abstract:`This is an article I wrote for the Mathematics Club IITM
+`,listed:!0,external:!1,path:"posts/gsoc25.json"},grouptheory_a44f1b9751:{title:"Group Theory and Cryptography",date:"Aug 10,2025",tags:["External","Mathematics","Cryptography"],abstract:`This is an article I wrote for the Mathematics Club IITM
 about the prominence of Group Theory in the history of Cryptography.
 `,listed:!0,external:!0,path:"https://mathiitm.com/articles/group_theory_cryptography/"},week5_79e0f75229:{title:"GSoC 2025 Week 5",date:"June 22,2025",tags:["Open Source","Compiler Design"],abstract:`Week-5 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week5.json"},week1_79e0f75229:{title:"GSoC 2025 Week 1",date:"May 25,2025",tags:["Open Source","Compiler Design"],abstract:`Week-1 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week1.json"},week4_79e0f75229:{title:"GSoC 2025 Week 4",date:"June 15,2025",tags:["Open Source","Compiler Design"],abstract:`Week-2 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week4.json"},week12_79e0f75229:{title:"GSoC 2025 Week 12",date:"Aug 10,2025",tags:["Open Source","Compiler Design"],abstract:`Week-12 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week12.json"},week3_79e0f75229:{title:"GSoC 2025 Week 3",date:"June 8,2025",tags:["Open Source","Compiler Design"],abstract:`Week-3 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week3.json"},week7_79e0f75229:{title:"GSoC 2025 Week 7",date:"July 6,2025",tags:["Open Source","Compiler Design"],abstract:`Week-7 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week7.json"},week11_79e0f75229:{title:"GSoC 2025 Week 11",date:"Aug 3,2025",tags:["Open Source","Compiler Design"],abstract:`Week-11 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week11.json"},week6_79e0f75229:{title:"GSoC 2025 Week 6",date:"June 29,2025",tags:["Open Source","Compiler Design"],abstract:`Week-6 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week6.json"},week10_79e0f75229:{title:"GSoC 2025 Week 10",date:"July 27,2025",tags:["Open Source","Compiler Design"],abstract:`Week-10 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week10.json"},week2_79e0f75229:{title:"GSoC 2025 Week 2",date:"June 1,2025",tags:["Open Source","Compiler Design"],abstract:`Week-2 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week2.json"},weekly_report_79e0f75229:{title:"GSoC 2025 Weekly Reports",date:"Aug 19,2025",tags:["Open Source","Compiler Design"],abstract:`Collection of weekly project reports for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/weekly_report.json"},week9_79e0f75229:{title:"GSoC 2025 Week 9",date:"July 20,2025",tags:["Open Source","Compiler Design"],abstract:`Week-9 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week9.json"},week8_79e0f75229:{title:"GSoC 2025 Week 8",date:"July 13,2025",tags:["Open Source","Compiler Design"],abstract:`Week-8 Progress Report for GSoC 2025
-`,listed:!1,external:!1,path:"temp_dist/posts/gsoc25/week8.json"},gctf_underhanded_bdb3904ac9:{title:"GCTF Writeup Underhanded",date:"Jul 3,2025",tags:["External","CTF","Cryptography"],abstract:`Exploiitm the CTF team of IITM gave Google CTF 2025 in June. It was 
+`,listed:!1,external:!1,path:"posts/gsoc25/week5.json"},week1_79e0f75229:{title:"GSoC 2025 Week 1",date:"May 25,2025",tags:["Open Source","Compiler Design"],abstract:`Week-1 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week1.json"},week4_79e0f75229:{title:"GSoC 2025 Week 4",date:"June 15,2025",tags:["Open Source","Compiler Design"],abstract:`Week-2 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week4.json"},week12_79e0f75229:{title:"GSoC 2025 Week 12",date:"Aug 10,2025",tags:["Open Source","Compiler Design"],abstract:`Week-12 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week12.json"},week3_79e0f75229:{title:"GSoC 2025 Week 3",date:"June 8,2025",tags:["Open Source","Compiler Design"],abstract:`Week-3 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week3.json"},week7_79e0f75229:{title:"GSoC 2025 Week 7",date:"July 6,2025",tags:["Open Source","Compiler Design"],abstract:`Week-7 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week7.json"},week11_79e0f75229:{title:"GSoC 2025 Week 11",date:"Aug 3,2025",tags:["Open Source","Compiler Design"],abstract:`Week-11 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week11.json"},week6_79e0f75229:{title:"GSoC 2025 Week 6",date:"June 29,2025",tags:["Open Source","Compiler Design"],abstract:`Week-6 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week6.json"},week10_79e0f75229:{title:"GSoC 2025 Week 10",date:"July 27,2025",tags:["Open Source","Compiler Design"],abstract:`Week-10 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week10.json"},week2_79e0f75229:{title:"GSoC 2025 Week 2",date:"June 1,2025",tags:["Open Source","Compiler Design"],abstract:`Week-2 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week2.json"},weekly_report_79e0f75229:{title:"GSoC 2025 Weekly Reports",date:"Aug 19,2025",tags:["Open Source","Compiler Design"],abstract:`Collection of weekly project reports for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/weekly_report.json"},week9_79e0f75229:{title:"GSoC 2025 Week 9",date:"July 20,2025",tags:["Open Source","Compiler Design"],abstract:`Week-9 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week9.json"},week8_79e0f75229:{title:"GSoC 2025 Week 8",date:"July 13,2025",tags:["Open Source","Compiler Design"],abstract:`Week-8 Progress Report for GSoC 2025
+`,listed:!1,external:!1,path:"posts/gsoc25/week8.json"},gctf_underhanded_bdb3904ac9:{title:"GCTF Writeup Underhanded",date:"Jul 3,2025",tags:["External","CTF","Cryptography"],abstract:`Exploiitm the CTF team of IITM gave Google CTF 2025 in June. It was 
 one month after the current coordinator tenure started and we got 
 \\#44 globally and top in India as a team of undergraduate sophomores.
 I solved a broken-aes implementation question \`Underhanded\` and this is

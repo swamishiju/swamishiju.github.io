@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GSoC Weekly Report</title>
+
+    <!--Prism.js CSS for Syntax Highlighting-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"
+      rel="stylesheet"
+    />
+    <!-- Diff2Html CSS for Git Diff Styling -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>GSoC Weekly Report</h1>
+      <p>Week 7 | Swaminath Shiju | LPython</p>
+      <p>6 July to 13 July</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+      <div class="report-section">
+        <h3>Weekly Agenda</h3>
+        <p>
+          This week I focused more on uncommenting tests in LPython. I've made
+          good progress for unsigned integer types but C-interop still remains
+          to be fixed.
+        </p>
+        <p>
+          The C-interop has some overlap with the string refactor the extent of
+          which I am not sure, but hopefully it shouldn't be a huge blocker.
+        </p>
+      </div>
+      <!-- Achievements Section -->
+      <div class="report-section">
+        <h3>Achievements</h3>
+        <ul>
+          <li>Fixed Unsigned integer properly in libasr</li>
+          <li>Made progress towards having C-introp working in LP</li>
+        </ul>
+      </div>
+
+      <!-- PR Link Section -->
+      <div class="report-section">
+        <h2>Pull Requests</h2>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/8002"
+              class="pr-link"
+              target="_blank"
+            >
+              #8002 LP type - argument handling in C backend
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/8011"
+              class="pr-link"
+              target="_blank"
+            >
+              #8011 C backend dict-copy fix
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/8034"
+              class="pr-link"
+              target="_blank"
+            >
+              #8034 Support unsigned integer in LF
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/8037"
+              class="pr-link"
+              target="_blank"
+            >
+              #8037 Proper handling of string argument in C backend
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lfortran/lfortran/pull/8002"
+              class="pr-link"
+              target="_blank"
+            >
+              #8055 Unsigned int print fix
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lcompilers/lpython/pull/2862"
+              class="pr-link"
+              target="_blank"
+            >
+              #2862 Fixed unsigned integer tests
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/lcompilers/lpython/pull/2862"
+              class="pr-link"
+              target="_blank"
+            >
+              #2863 String arguments fix
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h3>Goals for next week</h3>
+        <p>
+          The goal for next week is to get robust tests working for the
+          C-interop and unsigned integer PRs.
+        </p>
+        <p>
+          The string refactor will also most likely be finished soon and likely
+          break the LP type tests implemented in LF, so i need to work on fixing
+          those too. When that is done the libasr sync should go smoothly.
+        </p>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>GSoC Student Report | Python Software Foundation</p>
+    </footer>
+
+    <!-- Prism.js Library for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/autolinker/prism-autolinker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-fortran.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-powershell.min.js"></script>
+    <!-- Diff2Html Library for Git Diffs -->
+    <script src="https://cdn.jsdelivr.net/npm/diff2html/dist/diff2html.min.js"></script>
+
+    <!-- Example JavaScript to Load Git Diff -->
+    <script>
+      // Highlight all code blocks (for Prism.js)
+      Prism.highlightAll();
+
+      // Function to highlight mentions
+      function highlightMentions() {
+        const textElements = document.querySelectorAll("p, h2, h3, li"); // Text elements to scan for mentions
+        textElements.forEach((element) => {
+          element.innerHTML = element.innerHTML.replace(
+            /@([a-zA-Z0-9_-]+)/g,
+            '<a href="https://github.com/$1" class="mention">@$1</a>',
+          );
+        });
+      }
+
+      // Call the function to highlight mentions after the content is loaded
+      highlightMentions();
+    </script>
+  </body>
+</html>
