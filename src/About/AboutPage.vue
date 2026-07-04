@@ -19,14 +19,11 @@ const fontSize = () => (props.CollapseSidebar ? 2.6 : 1.3)
       development with Vue and partly a growing collection of thoughts, projects and experiences.
       <br />
       <br />
-      I am currently pursuing a degree in Electrical Engineering at IIT Madaras. I am also a
-      coordinator at the
+      I am currently pursuing a degree in Electrical Engineering at IIT Madaras. I am also one of
+      the current heads of the
       <a href="https://exploiitm.github.io" target="_blank" rel="noopener noreferrer">
-        Cybersecurity</a
-      >
-      and the
-      <a href="https://mathiitm.com" target="_blank" rel="noopener noreferrer"> Mathematics</a>
-      Club at CFI IITM.
+        Cybersecurity Club</a>
+      at CFI IITM.
     </div>
 
     <div style="margin-top: 40px">

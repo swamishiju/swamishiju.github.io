@@ -94,7 +94,7 @@ const fontSize = () => (props.CollapseSidebar ? 1.7 : 1.1)
           <span class="c0"
             >├──[<span class="icon-container"><Pi class="icon" /></span>]</span
           >
-          Higher Mathematics<br />
+          Pure Mathematics<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           'MMM8&amp;&amp;&amp;'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span class="c7">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
