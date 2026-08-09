@@ -54,7 +54,7 @@ const fontSize = () => (props.CollapseSidebar ? 1.7 : 1.1)
             >[<span class="icon-container"><GraduationCap class="icon" /></span>]</span
           >
           <span class="c3">
-            I am a <span class="c5">Sophomore</span> at <span class="c6">IIT Madras</span></span
+            I am a <span class="c5">Junior</span> at <span class="c6">IIT Madras</span></span
           ><br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span class="c4">MMM<span class="c3">M8</span>8M&amp;&amp;&amp;</span
@@ -107,20 +107,6 @@ const fontSize = () => (props.CollapseSidebar ? 1.7 : 1.1)
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="c0"
-            >├──[<span class="icon-container"><Cpu class="icon" /></span>]</span
-          >
-          Kernel Development<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="c1">)&nbsp;&nbsp;&nbsp;&nbsp; (</span
-          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="c7">.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c7"
-            >'</span
-          >
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="c0"
-            >└──[<span class="icon-container"><Cat class="icon" /></span>]</span
-          >
           Cats<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span class="c4">=</span><span class="c1">\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/</span><wbr />
