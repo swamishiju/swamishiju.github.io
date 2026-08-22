@@ -1,14 +1,15 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import SideBarItem from './SideBarItem.vue'
-import { Home, FolderGit2, Mail, Notebook, Menu } from 'lucide-vue-next'
+import { Home, FolderGit2, Mail, Notebook, Menu, Library } from 'lucide-vue-next'
 
 const sidebar = reactive({
   items: [
     { id: 1, route: '/', text: 'HOME', icon: Home },
     { id: 2, route: '/projects', text: 'PROJECTS', icon: FolderGit2 },
     { id: 3, route: '/blog', text: 'BLOG', icon: Notebook },
-    { id: 4, route: '/about', text: 'ABOUT', icon: Mail },
+    { id: 4, route: '/media', text: 'Media', icon: Library },
+    { id: 5, route: '/about', text: 'ABOUT', icon: Mail },
   ],
 })
 
