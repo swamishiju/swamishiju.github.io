@@ -62,6 +62,7 @@
 - [X] ~Pet Sematary - Stephen King~
 - [X] ~Cujo - Stephen King~
 - [X] ~It - Stephen King~
+- [X] ~Misery - Stephen King~
 - [ ] Salem's Lot - Stephen King
 - [ ] The Stand - Stephen King
 - [X] ~11/22/63 - Stephen King _(Complelling romance from a horror writer is soo peak)_~
@@ -90,3 +91,4 @@
 - [ ] Whiplash - Damien Chazelle
 - [ ] Black Swan - Darren Aronofsky,
 - [ ] 2001: A Space Odyssey - Stanley Kubrick
+- [ ] The Shining - Stanley Kubrick

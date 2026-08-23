@@ -21,7 +21,7 @@ const listHtml = ref(DOMPurify.sanitize(marked(listMarkdown)));
     :class="{ left_shift: !CollapseSidebar, top_shift: CollapseSidebar }"
     class="media_card_container bordered"
   >
-  This a growing, non-exhaustive list of stuff I want to read/watch sometime
+  This a growing, non-exhaustive list of stuff I think are cool and want to read/watch sometime
   <br/>
 
     <div v-html="listHtml"> </div>
