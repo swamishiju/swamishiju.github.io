@@ -11,7 +11,7 @@
 - [X] ~Crime and Punishment - Fyodor Dostoevsky~
 
 #### Social
-- [ ] East of Eden - John Steinbeck
+- [ ] East of Eden - John Steinbeck _(It is apparently getting a movie now xD)_
 - [ ] The Grapes of Wrath - John Steinbeck
 - [ ] Disgrace - J.M Coetzee
 - [ ] Blood Meridian - Cormac McCarthy _(Wendigoon's video on it is phenomenal)_
